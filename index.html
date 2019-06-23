@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Problem: Rock, Paper, Scissors</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script>
+        function computerPlay() {
+            let choice = Math.floor((Math.random() * 3) + 1);
+            if (choice == 1) {
+                return "rock";
+            } else if (choice == 2) {
+                return "paper";
+            } else {
+                return "scissors";
+            }
+        }
+
+        function playerPlay() {
+            let choice = prompt("Enter rock, paper or scissors");
+            return choice.toLowerCase();
+        }
+
+        function playerWon() {
+            const res = document.querySelector('#resultLabel');
+            res.textContent = "Results: You Won!"
+
+            const points = document.querySelector('#myScoreLabel');
+            let current = Number(points.textContent);
+            points.textContent = (current + 1);
+        }
+
+        function playerLose() {
+            const res = document.querySelector('#resultLabel');
+            res.textContent = "Results: You Lose!"
+
+            const points = document.querySelector('#cpuScoreLabel');
+            let current = Number(points.textContent);
+            points.textContent = (current + 1);
+        }
+
+        function playerDraw() {
+            const res = document.querySelector('#resultLabel');
+            res.textContent = "Results: It´s a Draw!"
+        }
+
+        function gameSet() {
+            const myPoints = document.querySelector('#myScoreLabel');
+            let myPts = Number(myPoints.textContent);
+            const cpuPoints = document.querySelector('#cpuScoreLabel');
+            let cpuPts = Number(cpuPoints.textContent);
+
+            if (myPts == 5) {
+                alert('You won the set!');
+            } else if (cpuPts == 5) {
+                alert('You lose the set!');
+            }
+        }
+
+        function getWinner(player) {
+            let computer = computerPlay();
+            const cpu = document.querySelector('#cpuChoice');
+            console.log(computer);
+            if (computer == "rock") {
+                cpu.textContent = "CPU choice was: Rock";
+                if (player == "rock") {
+                    playerDraw();
+                } else if (player == "paper") {
+                    playerWon();
+                } else if (player == "scissors") {
+                    playerLose();
+                } else {
+                    console.log("Wrong Input from User!");
+                }
+            } else if (computer == "paper") {
+                cpu.textContent = "CPU choice was: Paper";
+                if (player == "rock") {
+                    playerLose();
+                } else if (player == "paper") {
+                    playerDraw();
+                } else if (player == "scissors") {
+                    playerWon();
+                } else {
+                    console.log("Wrong Input from User!");
+                }
+            } else {
+                cpu.textContent = "CPU choice was: Scissors";
+                if (player == "rock") {
+                    playerWon();
+                } else if (player == "paper") {
+                    playerLose();
+                } else if (player == "scissors") {
+                    playerDraw();
+                } else {
+                    console.log("Wrong Input from User!");
+                }
+            }
+
+            gameSet();
+        }
+
+        function playRound() {
+            let play = playerPlay();
+            getWinner(play);
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="Scores">
+        <div class="scoreBox">
+            <label id="myNameLabel" class="contestant">YOU</label>
+            <h1 id="myScoreLabel" class="bigNumbers">0</label>
+        </div>
+        <div class="scoreBox">
+            <label id="cpuNameLabel" class="contestant">CPU</label>
+            <h1 id="cpuScoreLabel" class="bigNumbers">0</label>
+        </div>
+    </div>
+
+    <div id="Buttons">
+        <button id="rockButton" class="key">Rock</button>
+        <button id="paperButton" class="key">Paper</button>
+        <button id="scissorsButton" class="key">Scissors</button>
+    </div>
+
+    <div id="messageBox">
+        <label id="yourChoice">Your choice was: </label>
+        <label id="cpuChoice">CPU choice was: </label>
+        <label id="resultLabel">Results</label>
+    </div>
+</body>
+
+<script>
+    function onButtonPressed(e) {
+        if (e.target.id == 'rockButton') {
+            const you = document.querySelector('#yourChoice');
+            you.textContent = "Your choice was: Rock";
+            getWinner('rock');
+        } else if (e.target.id == 'paperButton') {
+            const you = document.querySelector('#yourChoice');
+            you.textContent = "Your choice was: Paper";
+            getWinner('paper');
+        } else {
+            const you = document.querySelector('#yourChoice');
+            you.textContent = "Your choice was: Scissors";
+            getWinner('scissors');
+        }
+    }
+
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => button.addEventListener('click', onButtonPressed))
+</script>
+
+</html>

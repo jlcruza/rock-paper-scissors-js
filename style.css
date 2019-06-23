@@ -1,0 +1,75 @@
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.key {
+    display: inline-block;
+    margin: auto;
+    justify-content: center;
+    align-content: center;
+    border-color: 2px solid black;
+}
+
+.contestant {
+    font-size: x-large;
+    color: white;
+    font-weight: bold;
+    border-color: 2px solid black;
+}
+
+.bigNumbers {
+    font-size: xx-large;
+    color: black;
+    font-weight: bolder;
+    border-color: 2px solid black;
+    justify-content: center;
+    align-content: center
+}
+
+#Scores {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    align-items: center;
+}
+
+.scoreBox {
+    border: 2px solid black;
+    display: inline-block;
+    margin: auto;
+    justify-content: center;
+    align-content: center;
+}
+
+#myNameLabel {
+    background-color: blue;
+}
+
+#cpuNameLabel {
+    background-color: red;
+}
+
+#messageBox {
+    display: block;
+    margin: auto;
+    background-color: lightgrey;
+}
+
+#messageBox label {
+    display: block;
+    margin: auto;
+}
+
+#yourChoice {
+    color: blue;
+}
+
+#cpuChoice {
+    color: red;
+}
+
+#resultLabel {
+    color: white;
+}
